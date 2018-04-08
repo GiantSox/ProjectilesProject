@@ -2,6 +2,7 @@
 #include "ofMain.h"
 #include "projectile.h"
 #include "ofxDatGui.h"
+#include "target.h"
 
 class ofApp : public ofBaseApp{
 
@@ -21,13 +22,19 @@ class ofApp : public ofBaseApp{
 		void windowResized(int w, int h);
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
+		void sliderHandler(ofxDatGuiSliderEvent e);
 
-		std::vector<Projectile> projectiles;
+		std::vector<Projectile*> projectiles;
 		Projectile *testProjectile = nullptr;
+		
 		ofRectangle tank;
+		Target target;
 		
 
 		ofxDatGui *gui;
 		ofxDatGuiSlider *velocitySlider;
 		ofxDatGuiSlider *angleSlider;
+
+
+		float angle;
 };

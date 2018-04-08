@@ -116,6 +116,9 @@
     <ClInclude Include="src\projectile.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="src\target.h">
+      <Filter>src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />

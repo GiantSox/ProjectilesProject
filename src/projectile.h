@@ -12,6 +12,9 @@ public:
 	float startingTime;
 
 	const float gravityAcceleration = -9.8;
+	float pixelsPerMeter = 1;
+
+	float diameter = 50;
 
 	static ofVec2f splitVelocity(float angle, float velocity) {
 
@@ -23,12 +26,14 @@ public:
 		startingVelocity = initialVelocity;
 	}
 	void update() {
-		float deltaT = ofGetElapsedTimef() - startingTime;
-		 currentVelocity.y = getNewVelocity(startingPosition.y, gravityAcceleration, deltaT);
-		 currentVelocity.x = startingVelocity.x;
+		float ellapsedTime = ofGetElapsedTimef();
+		float deltaT = ellapsedTime - startingTime;
 
-		 currentPosition.y = startingPosition.y + getDeltaXfromAcceleration(startingPosition.y, gravityAcceleration, deltaT);
-		 currentPosition.x = startingPosition.x + getDeltaXfromAcceleration(startingPosition.x, 0, deltaT);
+		/*currentVelocity.y = getNewVelocity(startingPosition.y, gravityAcceleration, deltaT);
+		currentVelocity.x = startingVelocity.x;*/
+
+		currentPosition.y = startingPosition.y + getDeltaXfromAcceleration(startingVelocity.y, gravityAcceleration, deltaT)*pixelsPerMeter;
+		currentPosition.x = startingPosition.x + getDeltaXfromAcceleration(startingVelocity.x, 0, deltaT)*pixelsPerMeter;
 
 
 		//float yAxisChange = getDeltaX(startingVelocity.y,starting)
